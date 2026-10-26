@@ -1,0 +1,108 @@
+[
+  {
+    "id": "scenario-cardiac-dadar",
+    "title": "Scenario A: Acute STEMI at Dadar TT",
+    "description": "58M with crushing substernal chest pain, SpO2 91%, ST elevations. En-route to KEM Hospital through heavy Ambedkar Road congestion with green corridor pre-emption.",
+    "targetAmbulanceId": "amb-108-02",
+    "targetHospitalId": "hosp-kem",
+    "estimatedMinutes": 8,
+    "events": [
+      {
+        "id": "ev-01",
+        "type": "NEW_INCIDENT",
+        "timestamp": 0,
+        "description": "Emergency call received from Dadar TT Circle",
+        "payload": {
+          "incidentId": "inc-demo-cardiac",
+          "complaint": "Acute crushing retrosternal chest pain radiating to left arm",
+          "ageBand": "ADULT",
+          "vitals": { "hr": 118, "sbp": 88, "dbp": 58, "spo2": 91, "rr": 26, "gcs": 14, "tempC": 36.8 }
+        }
+      },
+      {
+        "id": "ev-02",
+        "type": "TRAFFIC_JAM",
+        "timestamp": 45,
+        "description": "Severe congestion builds on Dr. Ambedkar Road Southbound (congestion index 0.85)",
+        "payload": {
+          "edgeIds": ["e-dadar-parel-s"],
+          "congestion": 0.85
+        }
+      },
+      {
+        "id": "ev-03",
+        "type": "SIGNAL_OVERRIDE",
+        "timestamp": 90,
+        "description": "Parel Junction signal triggers green pre-emption hold for DELTA-02",
+        "payload": {
+          "signalId": "sig-parel-flyover",
+          "action": "GREEN_HOLD"
+        }
+      }
+    ]
+  },
+  {
+    "id": "scenario-trauma-highway",
+    "title": "Scenario B: Multi-Vehicle Collision with Dynamic Re-Route",
+    "description": "High-speed road crash near Mahim Causeway. Road closure injected mid-route forces an instant A* re-routing avoiding 12 minutes of gridlock.",
+    "targetAmbulanceId": "amb-108-01",
+    "targetHospitalId": "hosp-hinduja",
+    "estimatedMinutes": 11,
+    "events": [
+      {
+        "id": "ev-04",
+        "type": "NEW_INCIDENT",
+        "timestamp": 0,
+        "description": "Multi-vehicle collision near Mahim Causeway Junction",
+        "payload": {
+          "incidentId": "inc-demo-trauma",
+          "complaint": "Polytrauma with blunt chest injury and hypotension",
+          "ageBand": "ADULT",
+          "vitals": { "hr": 132, "sbp": 82, "dbp": 50, "spo2": 89, "rr": 28, "gcs": 11, "tempC": 35.6 }
+        }
+      },
+      {
+        "id": "ev-05",
+        "type": "ROAD_CLOSURE",
+        "timestamp": 60,
+        "description": "Emergency services block Cadell Road Southbound due to oil spill",
+        "payload": {
+          "edgeId": "e-mahim-hinduja"
+        }
+      }
+    ]
+  },
+  {
+    "id": "scenario-stroke-divert",
+    "title": "Scenario C: Acute Stroke with ER Divert Redirection",
+    "description": "71F with acute ischemic stroke onset. Primary hospital ER load maxes out, recommender re-evaluates and diverts unit to Lilavati Comprehensive Stroke Center.",
+    "targetAmbulanceId": "amb-108-04",
+    "targetHospitalId": "hosp-lilavati",
+    "estimatedMinutes": 10,
+    "events": [
+      {
+        "id": "ev-06",
+        "type": "NEW_INCIDENT",
+        "timestamp": 0,
+        "description": "FAST positive acute hemiparesis reported at Dadar West",
+        "payload": {
+          "incidentId": "inc-demo-stroke",
+          "complaint": "Acute right-sided hemiplegia and expressive aphasia within 45 mins",
+          "ageBand": "ELDERLY",
+          "vitals": { "hr": 84, "sbp": 195, "dbp": 105, "spo2": 96, "rr": 18, "gcs": 13, "tempC": 37.1 }
+        }
+      },
+      {
+        "id": "ev-07",
+        "type": "HOSPITAL_FULL",
+        "timestamp": 75,
+        "description": "Nearby municipal hospital declares CT scanner down & ER diverted",
+        "payload": {
+          "hospitalId": "hosp-kem",
+          "diverted": true,
+          "reason": "Emergency CT malfunction, redirect stroke candidates"
+        }
+      }
+    ]
+  }
+]

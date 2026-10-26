@@ -1,0 +1,140 @@
+[
+  {
+    "id": "hosp-kem",
+    "name": "King Edward Memorial Hospital (KEM)",
+    "shortName": "KEM Hospital",
+    "pos": { "lat": 19.0026, "lng": 72.8427 },
+    "address": "Acharya Donde Marg, Parel, Mumbai 400012",
+    "phone": "+91 22 2410 7000",
+    "specialties": ["TRAUMA", "CARDIAC", "BURNS", "MATERNITY", "GENERAL"],
+    "waitingMin": 8,
+    "freeErBeds": 6,
+    "freeIcuBeds": 3,
+    "diverted": false,
+    "capacity": {
+      "erBeds": 6,
+      "erBedsTotal": 30,
+      "icuBeds": 3,
+      "icuBedsTotal": 24,
+      "ventilators": 3,
+      "ventilatorsTotal": 16
+    },
+    "erLoad": 0.72,
+    "readinessLeadTimeMinutes": 6
+  },
+  {
+    "id": "hosp-hinduja",
+    "name": "P. D. Hinduja National Hospital & MRC",
+    "shortName": "Hinduja Hospital",
+    "pos": { "lat": 19.0330, "lng": 72.8398 },
+    "address": "Veer Savarkar Marg, Mahim West, Mumbai 400016",
+    "phone": "+91 22 2445 1515",
+    "specialties": ["CARDIAC", "STROKE", "TRAUMA", "GENERAL"],
+    "waitingMin": 7,
+    "freeErBeds": 10,
+    "freeIcuBeds": 5,
+    "diverted": false,
+    "capacity": {
+      "erBeds": 10,
+      "erBedsTotal": 25,
+      "icuBeds": 5,
+      "icuBedsTotal": 20,
+      "ventilators": 5,
+      "ventilatorsTotal": 14
+    },
+    "erLoad": 0.52,
+    "readinessLeadTimeMinutes": 5
+  },
+  {
+    "id": "hosp-sion",
+    "name": "Sion Hospital",
+    "shortName": "Sion Hospital",
+    "pos": { "lat": 19.0366, "lng": 72.8601 },
+    "address": "Sion West, Mumbai 400022",
+    "phone": "+91 22 2407 6381",
+    "specialties": ["TRAUMA", "BURNS", "CARDIAC", "MATERNITY", "PEDIATRICS"],
+    "waitingMin": 3,
+    "freeErBeds": 3,
+    "freeIcuBeds": 1,
+    "diverted": false,
+    "capacity": {
+      "erBeds": 3,
+      "erBedsTotal": 35,
+      "icuBeds": 1,
+      "icuBedsTotal": 28,
+      "ventilators": 2,
+      "ventilatorsTotal": 18
+    },
+    "erLoad": 0.86,
+    "readinessLeadTimeMinutes": 7
+  },
+  {
+    "id": "hosp-lilavati",
+    "name": "Lilavati Hospital & Research Centre",
+    "shortName": "Lilavati Hospital",
+    "pos": { "lat": 19.0514, "lng": 72.8290 },
+    "address": "A-791, Bandra Reclamation, Bandra West, Mumbai 400050",
+    "phone": "+91 22 2675 1000",
+    "specialties": ["CARDIAC", "STROKE", "TRAUMA", "MATERNITY", "GENERAL"],
+    "waitingMin": 7,
+    "freeErBeds": 14,
+    "freeIcuBeds": 8,
+    "diverted": false,
+    "capacity": {
+      "erBeds": 14,
+      "erBedsTotal": 28,
+      "icuBeds": 8,
+      "icuBedsTotal": 22,
+      "ventilators": 6,
+      "ventilatorsTotal": 15
+    },
+    "erLoad": 0.44,
+    "readinessLeadTimeMinutes": 4
+  },
+  {
+    "id": "hosp-tata",
+    "name": "Tata Memorial Centre",
+    "shortName": "Tata Memorial",
+    "pos": { "lat": 19.0055, "lng": 72.8432 },
+    "address": "Dr. E Borges Road, Parel, Mumbai 400012",
+    "phone": "+91 22 2417 7000",
+    "specialties": ["GENERAL", "TRAUMA"],
+    "waitingMin": 25,
+    "freeErBeds": 4,
+    "freeIcuBeds": 2,
+    "diverted": false,
+    "capacity": {
+      "erBeds": 4,
+      "erBedsTotal": 15,
+      "icuBeds": 2,
+      "icuBedsTotal": 12,
+      "ventilators": 2,
+      "ventilatorsTotal": 10
+    },
+    "erLoad": 0.78,
+    "readinessLeadTimeMinutes": 8
+  },
+  {
+    "id": "hosp-kasturba",
+    "name": "Kasturba Hospital",
+    "shortName": "Kasturba Hospital",
+    "pos": { "lat": 18.9877, "lng": 72.8302 },
+    "address": "Sane Guruji Marg, Chinchpokli, Mumbai 400011",
+    "phone": "+91 22 2308 3901",
+    "specialties": ["GENERAL", "MATERNITY", "PEDIATRICS"],
+    "waitingMin": 12,
+    "freeErBeds": 8,
+    "freeIcuBeds": 3,
+    "diverted": false,
+    "capacity": {
+      "erBeds": 8,
+      "erBedsTotal": 20,
+      "icuBeds": 3,
+      "icuBedsTotal": 10,
+      "ventilators": 2,
+      "ventilatorsTotal": 8
+    },
+    "erLoad": 0.60,
+    "readinessLeadTimeMinutes": 5
+  }
+]

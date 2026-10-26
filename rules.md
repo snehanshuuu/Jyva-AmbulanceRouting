@@ -1,0 +1,8 @@
+- Follow PRD.md for requirements and architecture.md for structure and data models.
+- Use TypeScript strictly; keep engine logic in /src/engine as pure functions with no React imports.
+- All external data sources go through the adapter interfaces in /src/adapters.
+- Never call paid APIs; use Leaflet + OpenStreetMap.
+- Every triage and routing output must include human-readable reasons.
+- Add Vitest tests for routing, triage, and recommendation logic.
+- Show a "demo only / not medical advice" disclaimer in triage UI.
+- Build one milestone at a time; stop and summarise after each.

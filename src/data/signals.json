@@ -1,0 +1,83 @@
+[
+  {
+    "id": "sig-dadar-tt",
+    "nodeId": "node-dadar-tt",
+    "name": "Dadar TT Circle Junction",
+    "pos": { "lat": 19.0178, "lng": 72.8478 },
+    "state": "NORMAL",
+    "baseDelayS": 45,
+    "activePreemptEtaS": 0,
+    "timeInCurrentStateS": 0
+  },
+  {
+    "id": "sig-parel-flyover",
+    "nodeId": "node-parel-junction",
+    "name": "Parel Dr. Ambedkar Road Cross",
+    "pos": { "lat": 19.0068, "lng": 72.8422 },
+    "state": "PREEMPT_REQUESTED",
+    "baseDelayS": 35,
+    "activePreemptEtaS": 32,
+    "preemptAmbulanceId": "amb-108-02",
+    "timeInCurrentStateS": 8
+  },
+  {
+    "id": "sig-kings-circle",
+    "nodeId": "node-kings-circle",
+    "name": "Maheshwari Udyan (King's Circle)",
+    "pos": { "lat": 19.0289, "lng": 72.8546 },
+    "state": "NORMAL",
+    "baseDelayS": 40,
+    "activePreemptEtaS": 0,
+    "timeInCurrentStateS": 0
+  },
+  {
+    "id": "sig-elphinstone",
+    "nodeId": "node-elphinstone",
+    "name": "Elphinstone - Senapati Bapat Marg",
+    "pos": { "lat": 19.0012, "lng": 72.8315 },
+    "state": "NORMAL",
+    "baseDelayS": 30,
+    "activePreemptEtaS": 0,
+    "timeInCurrentStateS": 0
+  },
+  {
+    "id": "sig-worli-naka",
+    "nodeId": "node-worli-naka",
+    "name": "Worli Naka Junction",
+    "pos": { "lat": 18.9986, "lng": 72.8185 },
+    "state": "NORMAL",
+    "baseDelayS": 35,
+    "activePreemptEtaS": 0,
+    "timeInCurrentStateS": 0
+  },
+  {
+    "id": "sig-mahim-causeway",
+    "nodeId": "node-mahim-causeway",
+    "name": "Mahim Causeway - SV Road Exit",
+    "pos": { "lat": 19.0435, "lng": 72.8402 },
+    "state": "NORMAL",
+    "baseDelayS": 50,
+    "activePreemptEtaS": 0,
+    "timeInCurrentStateS": 0
+  },
+  {
+    "id": "sig-sena-bhavan",
+    "nodeId": "node-sena-bhavan",
+    "name": "Shivaji Park / Sena Bhavan Corner",
+    "pos": { "lat": 19.0261, "lng": 72.8385 },
+    "state": "NORMAL",
+    "baseDelayS": 30,
+    "activePreemptEtaS": 0,
+    "timeInCurrentStateS": 0
+  },
+  {
+    "id": "sig-lalbaug",
+    "nodeId": "node-lalbaug",
+    "name": "Lalbaug Bharatmata Cinema Junction",
+    "pos": { "lat": 18.9950, "lng": 72.8380 },
+    "state": "NORMAL",
+    "baseDelayS": 35,
+    "activePreemptEtaS": 0,
+    "timeInCurrentStateS": 0
+  }
+]

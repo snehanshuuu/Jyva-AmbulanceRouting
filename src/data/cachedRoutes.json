@@ -1,0 +1,126 @@
+{
+  "dadar-to-kem": {
+    "distanceM": 2150,
+    "durationS": 240,
+    "coordinates": [
+      { "lat": 19.0178, "lng": 72.8478 },
+      { "lat": 19.0125, "lng": 72.8450 },
+      { "lat": 19.0068, "lng": 72.8422 },
+      { "lat": 19.0042, "lng": 72.8425 },
+      { "lat": 19.0026, "lng": 72.8427 }
+    ],
+    "name": "Dr. Ambedkar Road Southbound"
+  },
+  "dadar-to-kem-detour": {
+    "distanceM": 2800,
+    "durationS": 310,
+    "coordinates": [
+      { "lat": 19.0178, "lng": 72.8478 },
+      { "lat": 19.0261, "lng": 72.8385 },
+      { "lat": 19.0012, "lng": 72.8315 },
+      { "lat": 19.0068, "lng": 72.8422 },
+      { "lat": 19.0026, "lng": 72.8427 }
+    ],
+    "name": "Tilak Bridge -> Senapati Bapat Marg Bypass"
+  },
+  "dadar-to-hinduja": {
+    "distanceM": 1950,
+    "durationS": 240,
+    "coordinates": [
+      { "lat": 19.0178, "lng": 72.8478 },
+      { "lat": 19.0261, "lng": 72.8385 },
+      { "lat": 19.0305, "lng": 72.8390 },
+      { "lat": 19.0330, "lng": 72.8398 }
+    ],
+    "name": "Tilak Bridge to Veer Savarkar Marg North"
+  },
+  "mahim-to-hinduja": {
+    "distanceM": 1400,
+    "durationS": 160,
+    "coordinates": [
+      { "lat": 19.0435, "lng": 72.8402 },
+      { "lat": 19.0380, "lng": 72.8400 },
+      { "lat": 19.0330, "lng": 72.8398 }
+    ],
+    "name": "Cadell Road Southbound"
+  },
+  "dadar-to-lilavati": {
+    "distanceM": 3800,
+    "durationS": 420,
+    "coordinates": [
+      { "lat": 19.0178, "lng": 72.8478 },
+      { "lat": 19.0261, "lng": 72.8385 },
+      { "lat": 19.0435, "lng": 72.8402 },
+      { "lat": 19.0514, "lng": 72.8290 }
+    ],
+    "name": "Veer Savarkar to Mahim Causeway & Bandra Reclamation"
+  },
+  "dadar-to-sion": {
+    "distanceM": 4200,
+    "durationS": 360,
+    "coordinates": [
+      { "lat": 19.0225, "lng": 72.8420 },
+      { "lat": 19.0250, "lng": 72.8450 },
+      { "lat": 19.0280, "lng": 72.8490 },
+      { "lat": 19.0305, "lng": 72.8530 },
+      { "lat": 19.0335, "lng": 72.8570 },
+      { "lat": 19.0366, "lng": 72.8601 }
+    ],
+    "name": "Dr. Ambedkar Rd to Eastern Express Hwy",
+    "steps": [
+      "Head northeast on Dr. Ambedkar Rd",
+      "In 300m, keep right onto Eastern Express Hwy",
+      "Continue over Sion Flyover approach",
+      "Arrive at Sion Hospital"
+    ]
+  },
+  "dadar-to-sion-detour": {
+    "distanceM": 4500,
+    "durationS": 390,
+    "coordinates": [
+      { "lat": 19.0225, "lng": 72.8420 },
+      { "lat": 19.0260, "lng": 72.8390 },
+      { "lat": 19.0310, "lng": 72.8440 },
+      { "lat": 19.0345, "lng": 72.8520 },
+      { "lat": 19.0366, "lng": 72.8601 }
+    ],
+    "name": "Tilak Flyover -> Matunga Central Bypass",
+    "steps": [
+      "Divert northwest via Tilak Flyover",
+      "Bypass Ambedkar jam via Matunga Central link",
+      "Re-enter Sion approach",
+      "Arrive at Sion Hospital"
+    ]
+  },
+  "dadar-to-kasturba": {
+    "distanceM": 3800,
+    "durationS": 360,
+    "coordinates": [
+      { "lat": 19.0225, "lng": 72.8420 },
+      { "lat": 19.0125, "lng": 72.8390 },
+      { "lat": 19.0010, "lng": 72.8340 },
+      { "lat": 18.9877, "lng": 72.8302 }
+    ],
+    "name": "Dr. Ambedkar Road to Sane Guruji Marg",
+    "steps": [
+      "Head southwest on Dr. Ambedkar Rd",
+      "Continue onto Sane Guruji Marg",
+      "Arrive at Kasturba Hospital"
+    ]
+  },
+  "dadar-to-tata": {
+    "distanceM": 1800,
+    "durationS": 180,
+    "coordinates": [
+      { "lat": 19.0225, "lng": 72.8420 },
+      { "lat": 19.0150, "lng": 72.8430 },
+      { "lat": 19.0055, "lng": 72.8432 }
+    ],
+    "name": "Dr. Ambedkar Rd to Dr. E Borges Rd",
+    "steps": [
+      "Head south on Dr. Ambedkar Rd",
+      "Turn right onto Dr. E Borges Rd",
+      "Arrive at Tata Memorial"
+    ]
+  }
+}

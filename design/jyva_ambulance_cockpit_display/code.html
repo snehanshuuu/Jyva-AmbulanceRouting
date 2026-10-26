@@ -1,0 +1,518 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Jyva Tactical Cockpit — Emergency Ambulance System</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['Space Grotesk', 'JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            clinical: {
+              bg: '#ebf7f3',
+              card: '#ffffff',
+              border: '#e2efe8',
+              borderLight: '#d9ebe2',
+              borderPill: '#d2e4dc',
+              primary: '#0f5146',
+              primaryHover: '#0c4239',
+              primaryLight: '#e4f6ef',
+              primaryBadge: '#c6f3e3',
+              title: '#132a24',
+              muted: '#547169',
+              tagBg: '#ebfdf8',
+            }
+          },
+          boxShadow: {
+            'hospital-card': '0 4px 24px -2px rgba(15, 81, 70, 0.05), 0 2px 6px -1px rgba(15, 81, 70, 0.02)',
+            'hospital-pill': '0 1px 3px rgba(15, 81, 70, 0.06)',
+            'button-soft': '0 3px 12px rgba(15, 81, 70, 0.16)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Typography: Plus Jakarta Sans & Space Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<style data-purpose="base-and-scrollbars">
+    body {
+      background-color: #ebf7f3;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #132a24;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 81, 70, 0.02);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(15, 81, 70, 0.15);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(15, 81, 70, 0.25);
+    }
+  </style>
+<style data-purpose="custom-animations">
+    @keyframes subtle-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.08); }
+    }
+    .animate-pulse-slow {
+      animation: subtle-pulse 2.2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col overflow-hidden text-sm selection:bg-teal-100 selection:text-[#0f5146]">
+<!-- BEGIN: MainHeader -->
+<header class="w-full px-6 py-3.5 flex items-center justify-between border-b border-[#e2efe8] bg-[#ebf7f3]" data-purpose="top-navigation-bar">
+<!-- Left: Brand mark & Status Info -->
+<div class="flex items-center space-x-4">
+<!-- Medical Caduceus / Hexagon Icon Badge matching reference -->
+<div class="w-10 h-10 rounded-2xl bg-white flex items-center justify-center shadow-hospital-pill border border-[#d9ebe2] text-[#0f5146] shrink-0">
+<svg class="w-5 h-5 text-[#0f5146]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" fill="#0f5146" opacity="0.15" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M12 4v16m-8-8h16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<div class="flex items-center space-x-3">
+<h1 class="text-2xl font-black tracking-tight text-[#132a24] leading-none">Jyva</h1>
+<span class="px-2.5 py-0.5 text-xs font-bold tracking-wider bg-[#0f5146] text-white rounded-full shadow-sm">AMB-014</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#c6f3e3] text-[#0a4239] border border-[#a6e6cf]">
+<span class="w-2 h-2 rounded-full bg-[#0f5146] animate-pulse-slow"></span>
+          En route • Code 3 Priority
+        </span>
+</div>
+<p class="text-xs text-[#547169] font-medium mt-1">108 Emergency Service • Dispatched from Sion Base Station</p>
+</div>
+</div>
+<!-- Right: Crew Profile Capsule -->
+<div class="flex items-center space-x-3">
+<div class="flex items-center space-x-2.5 bg-white rounded-full px-3.5 py-1.5 border border-[#d9ebe2] shadow-hospital-pill" data-purpose="operator-profile">
+<div class="w-7 h-7 rounded-full bg-[#0f5146] flex items-center justify-center text-white text-xs font-bold">
+        MR
+      </div>
+<div class="text-left pr-1">
+<p class="text-[10px] text-[#547169] uppercase font-bold tracking-wider leading-none">Paramedic Lead</p>
+<p class="text-xs font-bold text-[#132a24] leading-tight">M. Rao</p>
+</div>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContentContainer (Clean 2-Column Layout, ~41% / ~59%) -->
+<main class="flex-1 px-6 py-4 flex gap-5 overflow-hidden" data-purpose="main-cockpit-layout">
+<!-- LEFT COLUMN: Facilities & Vitals Telemetry (~41% Width) -->
+<div class="w-[41%] flex flex-col space-y-4 overflow-y-auto pr-1" data-purpose="controls-and-telemetry-column">
+<!-- BEGIN: HospitalSelectorCard -->
+<section class="bg-white rounded-3xl p-5 border border-[#e2efe8] shadow-hospital-card" data-purpose="nearby-hospitals-card">
+<div class="flex items-center justify-between mb-3.5">
+<div class="flex items-center space-x-2.5">
+<div class="w-7 h-7 rounded-full bg-[#ebf7f3] text-[#0f5146] flex items-center justify-center">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<h2 class="text-base font-bold tracking-tight text-[#132a24]">Nearby hospitals</h2>
+<span class="px-2.5 py-0.5 text-xs font-semibold bg-[#ebf7f3] text-[#0f5146] rounded-full border border-[#d2e4dc]">3 ranked</span>
+</div>
+<span class="text-xs text-[#547169] font-medium">Sorted by total time (travel + wait)</span>
+</div>
+<div class="space-y-3">
+<!-- Hospital 1 (Recommended Active Target: Sion Hospital) -->
+<div class="relative rounded-2xl p-4 bg-[#f2faf7] border border-[#bee2d4]" data-purpose="recommended-facility">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center space-x-2">
+<h3 class="font-bold text-[#132a24] text-base">Sion Hospital</h3>
+<span class="bg-[#c6f3e3] text-[#0a4239] text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-full border border-[#a6e6cf]">
+                  Recommended
+                </span>
+</div>
+<p class="text-xs text-[#0f5146] font-medium mt-1">6 min away + 5 min wait, cardiac unit available</p>
+</div>
+<!-- Active Target Pill matching "Reserve Bed" deep forest teal styling -->
+<span class="px-3.5 py-1.5 bg-[#0f5146] text-white text-xs font-semibold rounded-full shadow-hospital-pill flex items-center space-x-1.5">
+<span class="">Active Target</span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#64f9bc]"></span>
+</span>
+</div>
+<div class="grid grid-cols-3 gap-2.5 mt-3 pt-3 border-t border-[#bee2d4] text-center">
+<div class="bg-white rounded-xl py-2 px-2 border border-[#d2e4dc]/70 shadow-hospital-pill">
+<p class="text-[11px] text-[#547169] font-semibold uppercase tracking-wider">Travel</p>
+<p class="text-sm font-black text-[#132a24] font-mono">6 min</p>
+</div>
+<div class="bg-white rounded-xl py-2 px-2 border border-[#d2e4dc]/70 shadow-hospital-pill">
+<p class="text-[11px] text-[#547169] font-semibold uppercase tracking-wider">Wait Time</p>
+<p class="text-sm font-black text-[#132a24] font-mono">5 min</p>
+</div>
+<div class="bg-[#c6f3e3] rounded-xl py-2 px-2 border border-[#a6e6cf]">
+<p class="text-[11px] text-[#0a4239] uppercase font-black tracking-wider">Total Arrival</p>
+<p class="text-sm font-black text-[#0f5146] font-mono">11 min</p>
+</div>
+</div>
+</div>
+<!-- Hospital 2 -->
+<div class="rounded-2xl p-3.5 bg-white hover:bg-[#f6fbf9] border border-[#e2efe8] transition flex items-center justify-between">
+<div>
+<div class="flex items-center space-x-2">
+<h3 class="font-bold text-[#132a24] text-sm">Lilavati Hospital &amp; Research</h3>
+<span class="text-[10px] font-semibold text-[#547169] bg-[#f0f4f2] px-2 py-0.5 rounded-full">High Load</span>
+</div>
+<p class="text-xs text-[#547169] mt-1">Travel: 12m • Wait: 14m • <span class="font-bold text-[#132a24]">Total: 26 min</span></p>
+</div>
+<button class="px-4 py-1.5 text-xs font-medium text-[#0f5146] bg-white hover:bg-[#eef7f3] border border-[#d2e4dc] rounded-full shadow-hospital-pill transition">Select</button>
+</div>
+<!-- Hospital 3 -->
+<div class="rounded-2xl p-3.5 bg-white hover:bg-[#f6fbf9] border border-[#e2efe8] transition flex items-center justify-between">
+<div>
+<div class="flex items-center space-x-2">
+<h3 class="font-bold text-[#132a24] text-sm">Hinduja National Hospital</h3>
+<span class="text-[10px] font-semibold text-[#0f5146] bg-[#c6f3e3] px-2 py-0.5 rounded-full">Trauma Ready</span>
+</div>
+<p class="text-xs text-[#547169] mt-1">Travel: 15m • Wait: 8m • <span class="font-bold text-[#132a24]">Total: 23 min</span></p>
+</div>
+<button class="px-4 py-1.5 text-xs font-medium text-[#0f5146] bg-white hover:bg-[#eef7f3] border border-[#d2e4dc] rounded-full shadow-hospital-pill transition">Select</button>
+</div>
+</div>
+</section>
+<!-- END: HospitalSelectorCard -->
+<!-- BEGIN: PatientVitalsCard -->
+<section class="bg-white rounded-3xl p-5 border border-[#e2efe8] shadow-hospital-card flex-1 flex flex-col justify-between" data-purpose="vitals-telemetry-card">
+<div>
+<!-- Header & Segmented Pill Case-Type Selector -->
+<div class="flex items-center justify-between gap-2 mb-4">
+<div class="flex items-center space-x-2.5">
+<div class="w-7 h-7 rounded-full bg-[#ebf7f3] text-[#0f5146] flex items-center justify-center">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<div>
+<h2 class="text-base font-bold tracking-tight text-[#132a24]">Patient Vitals &amp; Status</h2>
+<p class="text-xs text-[#547169] font-medium">Adult Male, 54y • ID #JY-9022</p>
+</div>
+</div>
+<!-- Segmented Pill Selector (styled identically to Bed | Room in Image 2) -->
+<div class="flex items-center bg-[#f0f7f4] p-1 rounded-full text-xs font-medium text-[#547169] border border-[#d9ebe2]">
+<button class="px-3 py-1 bg-white text-[#132a24] font-semibold rounded-full shadow-sm transition">Cardiac</button>
+<button class="px-3 py-1 text-[#547169] hover:text-[#132a24] transition">Trauma</button>
+<button class="px-3 py-1 text-[#547169] hover:text-[#132a24] transition">Stroke</button>
+<button class="px-2.5 py-1 text-[#547169] hover:text-[#132a24] transition">More</button>
+</div>
+</div>
+<!-- 4 Vital Metric Panels (High-glanceability clean numbers) -->
+<div class="grid grid-cols-2 gap-3 mb-4" data-purpose="biometric-grid">
+<!-- Heart Rate Tile -->
+<div class="bg-[#f7faf8] rounded-2xl p-3.5 border border-[#e2efe8] relative group">
+<div class="flex items-center justify-between">
+<span class="text-xs text-[#547169] font-semibold uppercase tracking-wider">Heart rate</span>
+<div class="w-6 h-6 rounded-full bg-white border border-[#d9ebe2] flex items-center justify-center text-[#547169] text-xs">
+<svg class="w-3 h-3 text-[#547169]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+</div>
+<div class="mt-1 flex items-baseline space-x-1">
+<span class="text-3xl font-black tracking-tight text-[#132a24] font-mono">118</span>
+<span class="text-xs text-[#547169] font-bold">BPM</span>
+</div>
+<span class="inline-block mt-1 text-[11px] font-semibold text-[#c02626] bg-[#ffebeb] px-2 py-0.5 rounded-full border border-[#fecaca]">Tachycardia Alert</span>
+</div>
+<!-- SpO2 Tile (Critical) -->
+<div class="bg-[#fff6f6] rounded-2xl p-3.5 border border-[#fecaca] relative">
+<div class="flex items-center justify-between">
+<span class="text-xs text-[#b91c1c] font-semibold uppercase tracking-wider">SpO2 (O2 Sat)</span>
+<span class="text-[10px] font-extrabold uppercase bg-[#dc2626] text-white px-2 py-0.5 rounded-full">Low</span>
+</div>
+<div class="mt-1 flex items-baseline space-x-1">
+<span class="text-3xl font-black tracking-tight text-[#991b1b] font-mono">88</span>
+<span class="text-xs text-[#b91c1c] font-bold">%</span>
+</div>
+<span class="inline-block mt-1 text-[11px] font-medium text-[#b91c1c]">Critical Oxygenation</span>
+</div>
+<!-- Blood Pressure Tile -->
+<div class="bg-[#f7faf8] rounded-2xl p-3.5 border border-[#e2efe8]">
+<div class="flex items-center justify-between">
+<span class="text-xs text-[#547169] font-semibold uppercase tracking-wider">Blood pressure</span>
+<span class="text-[11px] font-semibold text-[#b45309] bg-[#fef3c7] px-2 py-0.5 rounded-full">Elevated</span>
+</div>
+<div class="mt-1 flex items-baseline space-x-1">
+<span class="text-3xl font-black tracking-tight text-[#132a24] font-mono">145<span class="text-lg font-normal text-[#547169]/60">/</span>92</span>
+<span class="text-xs text-[#547169] font-bold">mmHg</span>
+</div>
+<span class="inline-block mt-1 text-[11px] font-medium text-[#547169]">MAP: 109.6 • Stable</span>
+</div>
+<!-- GCS Score Tile -->
+<div class="bg-[#f7faf8] rounded-2xl p-3.5 border border-[#e2efe8]">
+<div class="flex items-center justify-between">
+<span class="text-xs text-[#547169] font-semibold uppercase tracking-wider">Consciousness (GCS)</span>
+<span class="text-[11px] font-medium text-[#547169]">E4 V4 M4</span>
+</div>
+<div class="mt-1 flex items-baseline space-x-1">
+<span class="text-3xl font-black tracking-tight text-[#132a24] font-mono">12<span class="text-lg font-normal text-[#547169]/60">/15</span></span>
+<span class="text-xs text-[#547169] font-bold">GCS</span>
+</div>
+<span class="inline-block mt-1 text-[11px] font-medium text-[#547169]">Confused verbal response</span>
+</div>
+</div>
+<!-- High-Contrast Priority Warning Banner (Refined to fit clinical aesthetic) -->
+<div class="rounded-2xl bg-[#dc2626] text-white p-3.5 shadow-sm flex items-center space-x-3 mb-3">
+<div class="p-2 bg-white/20 rounded-xl shrink-0">
+<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path>
+</svg>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-sm font-black tracking-wide uppercase">CRITICAL: SpO2 88% (below 90), GCS 12</span>
+<span class="text-[11px] font-mono bg-white/25 font-bold px-2.5 py-0.5 rounded-full">CODE RED</span>
+</div>
+<p class="text-xs text-rose-100 font-medium mt-0.5">Adult Male, 54y • ID #JY-9022</p>
+</div>
+</div>
+</div>
+<!-- Action Button & 4-Stage Progress Stepper -->
+<div class="mt-2 pt-3 border-t border-[#e2efe8]">
+<!-- Primary Action Button: Large tactile rounded-full CTA matching Image 2 "Reserve Bed" style -->
+<button class="w-full py-3.5 px-6 bg-[#0f5146] hover:bg-[#0c4239] text-white font-semibold rounded-full shadow-button-soft transition flex items-center justify-center space-x-2">
+<svg class="w-4 h-4 text-[#64f9bc]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-sm tracking-wide">Send alert to hospital</span>
+</button>
+<!-- 4-Stage Progress Stepper: Sent, Acknowledged, Ready, Arrived -->
+<div class="grid grid-cols-4 gap-2 mt-3 text-center text-xs font-semibold" data-purpose="transmission-stepper">
+<!-- Step 1: Sent (Active/Completed) -->
+<div class="bg-[#c6f3e3] text-[#0a4239] py-2 px-1 rounded-full border border-[#a6e6cf] flex items-center justify-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-[#0f5146]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">Sent</span>
+</div>
+<!-- Step 2: Acknowledged (Active/Completed) -->
+<div class="bg-[#c6f3e3] text-[#0a4239] py-2 px-1 rounded-full border border-[#a6e6cf] flex items-center justify-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-[#0f5146]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">Acknowledged</span>
+</div>
+<!-- Step 3: Ready (In Progress) -->
+<div class="bg-[#fef3c7] text-[#92400e] py-2 px-1 rounded-full border border-[#fde68a] flex items-center justify-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#d97706] animate-pulse"></span>
+<span class="">Ready</span>
+</div>
+<!-- Step 4: Arrived (Pending) -->
+<div class="bg-[#f0f7f4] text-[#547169] py-2 px-1 rounded-full border border-[#d9ebe2] flex items-center justify-center gap-1.5">
+<span class="text-[#547169]/50">○</span>
+<span class="">Arrived</span>
+</div>
+</div>
+<p class="text-[10px] text-[#547169] text-center font-medium mt-2.5">Demo only, not medical advice</p>
+</div>
+</section>
+<!-- END: PatientVitalsCard -->
+</div>
+<!-- RIGHT COLUMN: Tactical 2D Navigation View (~59% Width) -->
+<div class="w-[59%] flex flex-col space-y-4" data-purpose="tactical-navigator-column">
+<!-- BEGIN: NavigationViewportCard -->
+<section class="flex-1 bg-white rounded-3xl p-5 border border-[#e2efe8] shadow-hospital-card flex flex-col relative overflow-hidden" data-purpose="tactical-map-viewport">
+<!-- Top Turn-by-Turn Guidance HUD Banner -->
+<div class="absolute top-7 left-7 right-7 z-20 flex items-center justify-between pointer-events-none">
+<div class="pointer-events-auto bg-[#0a1e19]/95 backdrop-blur-md text-white px-5 py-3.5 rounded-2xl shadow-xl border border-white/10 flex items-center space-x-4 max-w-xl">
+<!-- Direction Arrow in circular style matching ref -->
+<div class="w-10 h-10 rounded-full bg-[#0f5146] text-[#64f9bc] border border-[#2c685c] flex items-center justify-center font-bold shrink-0">
+<svg class="w-5 h-5 rotate-45 transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M5 10l7-7m0 0l7 7m-7-7v18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="text-xs text-[#64f9bc] font-bold uppercase tracking-wider">In 300 meters</p>
+<h4 class="text-base font-bold text-white leading-tight">Turn right onto Eastern Express Hwy</h4>
+</div>
+<!-- Lane Indicator -->
+<div class="flex items-center space-x-1 pl-3.5 border-l border-white/15 text-sm font-mono font-bold">
+<span class="text-white/30">|</span>
+<span class="text-white/30">↑</span>
+<span class="text-[#64f9bc] text-base">↗</span>
+<span class="text-white/30">|</span>
+</div>
+</div>
+<!-- Clean Demo Controls (Translucent rounded-full pills) -->
+<div class="pointer-events-auto bg-[#0a1e19]/90 backdrop-blur-md rounded-full p-1.5 border border-white/10 flex items-center space-x-1.5 shadow-sm">
+<button class="px-3.5 py-1.5 text-xs font-medium bg-white/10 hover:bg-white/20 text-white rounded-full transition flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-rose-400"></span>
+<span class="">Add traffic jam</span>
+</button>
+<button class="px-3.5 py-1.5 text-xs font-medium bg-transparent hover:bg-white/10 text-emerald-100 rounded-full transition">Reset demo</button>
+</div>
+</div>
+<!-- Clean Dark Deep Forest / Navy Flat 2D Street Map (#0b1916) with rounded-3xl corners -->
+<div class="flex-1 w-full rounded-2xl bg-[#0b1916] relative overflow-hidden border border-[#16382f] mt-1" data-purpose="vector-2d-tactical-map">
+<svg class="w-full h-full" fill="none" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<!-- Cyan Glow Filter -->
+<filter height="140%" id="routeGlow" width="140%" x="-20%" y="-20%">
+<feGaussianBlur result="blur" stdDeviation="5"></feGaussianBlur>
+<feComposite in="SourceGraphic" in2="blur" operator="over"></feComposite>
+</filter>
+<!-- Red Delay Glow -->
+<filter height="140%" id="redGlow" width="140%" x="-20%" y="-20%">
+<feGaussianBlur result="blur" stdDeviation="4"></feGaussianBlur>
+<feComposite in="SourceGraphic" in2="blur" operator="over"></feComposite>
+</filter>
+<!-- Street Map Grid Pattern -->
+<pattern height="60" id="streetGrid" patternUnits="userSpaceOnUse" width="60">
+<path d="M 60 0 L 0 0 0 60" fill="none" stroke="#16312a" stroke-dasharray="4,4" stroke-width="0.75"></path>
+</pattern>
+</defs>
+<!-- Background Matrix Grid -->
+<rect fill="#0b1916" height="100%" width="100%"></rect>
+<rect fill="url(#streetGrid)" height="100%" opacity="0.6" width="100%"></rect>
+<!-- 2D Urban Street Layout Grid (Secondary roads) -->
+<g opacity="0.7" stroke="#16312a" stroke-linecap="round" stroke-width="5">
+<line x1="80" x2="80" y1="0" y2="500"></line>
+<line x1="220" x2="220" y1="0" y2="500"></line>
+<line x1="380" x2="380" y1="0" y2="500"></line>
+<line x1="540" x2="540" y1="0" y2="500"></line>
+<line x1="700" x2="700" y1="0" y2="500"></line>
+<line x1="0" x2="800" y1="100" y2="100"></line>
+<line x1="0" x2="800" y1="220" y2="220"></line>
+<line x1="0" x2="800" y1="360" y2="360"></line>
+<line x1="0" x2="800" y1="440" y2="440"></line>
+</g>
+<!-- 2D Major Arteries / Avenues -->
+<g opacity="0.85" stroke="#1e463c" stroke-linecap="round" stroke-linejoin="round" stroke-width="12">
+<path d="M 40 400 L 220 340 L 420 340 L 620 200 L 760 140"></path>
+<path d="M 120 480 L 120 40"></path>
+<path d="M 660 480 L 660 40"></path>
+<path d="M 220 340 L 460 210 L 660 210"></path>
+</g>
+<!-- Avoided Traffic Congestion Zone (Hazard Area with Red Dash) -->
+<g>
+<!-- Avoided congested road segment -->
+<path d="M 220 340 L 420 340 L 520 270" filter="url(#redGlow)" opacity="0.85" stroke="#f43f5e" stroke-dasharray="9,6" stroke-width="7"></path>
+<!-- Congestion Box Marker -->
+<rect fill="#4c0519" filter="url(#redGlow)" height="42" rx="12" stroke="#f43f5e" stroke-width="1.8" width="130" x="300" y="318"></rect>
+<circle class="animate-pulse" cx="316" cy="339" fill="#f43f5e" r="4"></circle>
+<text fill="#fca5a5" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" letter-spacing="0.05em" x="328" y="334">TRAFFIC DELAY</text>
+<text fill="#ffffff" font-family="'Space Grotesk', monospace" font-size="11" font-weight="700" x="328" y="348">+3 MIN AVOIDED</text>
+</g>
+<!-- Active Rerouted Path (Glowing Emerald / Cyan Route) -->
+<!-- Ambient Glow -->
+<path d="M 120 380 L 220 340 L 320 220 L 540 220 L 660 140" filter="url(#routeGlow)" opacity="0.4" stroke="#2dd4bf" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"></path>
+<!-- Main Route Line -->
+<path d="M 120 380 L 220 340 L 320 220 L 540 220 L 660 140" stroke="#14b8a6" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></path>
+<!-- Forward Motion Dashes -->
+<path d="M 120 380 L 220 340 L 320 220 L 540 220 L 660 140" stroke="#ffffff" stroke-dasharray="8,16" stroke-linecap="round" stroke-width="2.5">
+<animate attributeName="stroke-dashoffset" dur="2s" from="100" repeatCount="indefinite" to="0"></animate>
+</path>
+<!-- Ambulance Current Position Marker (AMB-014) at (120, 380) -->
+<g transform="translate(120, 380)">
+<circle class="animate-pulse-slow" cx="0" cy="0" fill="none" opacity="0.6" r="24" stroke="#2dd4bf" stroke-width="1.5"></circle>
+<circle cx="0" cy="0" fill="rgba(45,212,191,0.25)" r="14" stroke="#2dd4bf" stroke-width="2"></circle>
+<circle cx="0" cy="0" fill="#0f5146" filter="url(#routeGlow)" r="8" stroke="#ffffff" stroke-width="2"></circle>
+<!-- Ambulance Label Pin -->
+<g transform="translate(0, -32)">
+<rect fill="#0a1e19" filter="url(#routeGlow)" height="26" rx="13" stroke="#2dd4bf" stroke-width="1.5" width="96" x="-48" y="-14"></rect>
+<circle class="animate-ping" cx="-36" cy="-1" fill="#2dd4bf" r="3"></circle>
+<text fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" x="-26" y="3">AMB-014</text>
+</g>
+</g>
+<!-- Destination Beacon Marker: Sion Hospital at (660, 140) -->
+<g transform="translate(660, 140)">
+<!-- Target concentric rings -->
+<circle class="animate-pulse-slow" cx="0" cy="0" fill="none" opacity="0.6" r="28" stroke="#34d399" stroke-dasharray="5,3" stroke-width="1.5"></circle>
+<circle cx="0" cy="0" fill="rgba(52,211,153,0.2)" r="16" stroke="#34d399" stroke-width="2"></circle>
+<circle cx="0" cy="0" fill="#0f5146" r="7" stroke="#ffffff" stroke-width="2"></circle>
+<!-- Destination Label Callout Card -->
+<g transform="translate(0, -42)">
+<rect fill="#072b25" filter="url(#routeGlow)" height="34" rx="17" stroke="#34d399" stroke-width="1.8" width="130" x="-65" y="-18"></rect>
+<circle cx="-50" cy="-1" fill="#34d399" r="3.5"></circle>
+<text fill="#a7f3d0" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" letter-spacing="0.05em" x="-40" y="-3">DESTINATION</text>
+<text fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" x="-40" y="11">Sion Hospital</text>
+</g>
+</g>
+<!-- Street Names Labels on Map -->
+<text fill="#5e887d" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" x="140" y="395">Dr. Ambedkar Rd</text>
+<text fill="#5eead4" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" x="360" y="205">Eastern Express Hwy</text>
+<text fill="#5e887d" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" x="560" y="125">Sion Flyover Approach</text>
+</svg>
+<!-- Current Speed HUD Pill (Bottom Left of 2D Map) -->
+<div class="absolute bottom-3 left-4 text-xs font-mono font-bold text-white bg-[#0a1e19]/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-[#34d399]"></span>
+<span class="">SPEED: <span class="text-white text-sm font-black">64 KM/H</span></span>
+</div>
+</div>
+<!-- BEGIN: RouteSummaryStrip -->
+<div class="mt-4 pt-4 border-t border-[#e2efe8] flex items-center justify-between" data-purpose="route-metrics-strip">
+<div class="flex items-center space-x-6">
+<!-- Big ETA Readout -->
+<div>
+<div class="flex items-baseline space-x-1.5">
+<span class="text-4xl font-black text-[#132a24] tracking-tight font-mono">6</span>
+<span class="text-base font-bold text-[#547169]">MIN</span>
+</div>
+<p class="text-xs text-[#547169] font-medium">ETA to Sion Hospital</p>
+</div>
+<div class="h-10 w-[1px] bg-[#d9ebe2]"></div>
+<!-- Distance Stats -->
+<div>
+<div class="flex items-baseline space-x-1">
+<span class="text-2xl font-black text-[#132a24] font-mono">4.2</span>
+<span class="text-sm font-bold text-[#547169]">KM</span>
+</div>
+<p class="text-xs text-[#547169] font-medium">Distance remaining</p>
+</div>
+<div class="h-10 w-[1px] bg-[#d9ebe2] hidden sm:block"></div>
+<!-- Savings Badge (Updated to 3 min saved) -->
+<div class="hidden sm:block">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#c6f3e3] text-[#0a4239] border border-[#a6e6cf]">
+<svg class="w-3.5 h-3.5 text-[#0f5146]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+              3 min saved vs default route
+            </span>
+<p class="text-xs text-[#547169] font-medium mt-1">Rerouted via Eastern Express Flyover</p>
+</div>
+</div>
+<!-- Secondary Action Button matching Image 2 "View Details" style -->
+<button class="px-5 py-2.5 bg-white hover:bg-[#eef7f3] text-[#0f5146] text-xs font-semibold rounded-full border border-[#d2e4dc] shadow-hospital-pill transition flex items-center space-x-2">
+<span class="">View Full Route</span>
+<div class="w-5 h-5 rounded-full bg-[#ebf7f3] flex items-center justify-center text-[#0f5146]">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+<path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</button>
+</div>
+<!-- END: RouteSummaryStrip -->
+</section>
+<!-- END: NavigationViewportCard -->
+</div>
+</main>
+<!-- END: MainContentContainer -->
+<!-- BEGIN: Minimal Footer -->
+<footer class="w-full px-6 py-2.5 bg-[#e4f2ec] border-t border-[#d9ebe2] flex items-center justify-between text-xs text-[#547169] font-medium" data-purpose="minimal-footer">
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-[#0f5146]"></span>
+<span class="font-semibold text-[#132a24]">Ambulance AMB-014 Active</span>
+<span class="text-[#547169]/40">•</span>
+<span class="">Connected to Sion Hospital Emergency Response</span>
+</div>
+<div class="text-[11px] font-semibold text-[#547169]">
+    Emergency Medical Services
+  </div>
+</footer>
+<!-- END: Minimal Footer -->
+
+
+</body></html>

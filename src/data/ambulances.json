@@ -1,0 +1,97 @@
+[
+  {
+    "id": "AMB-014",
+    "plate": "MH-01-EQ-1082",
+    "callSign": "DELTA-02",
+    "type": "ALS",
+    "status": "TRANSPORTING",
+    "operator": {
+      "type": "GOVT_108",
+      "name": "108 Emergency Service"
+    },
+    "baseHospitalId": "hosp-sion",
+    "pos": { "lat": 19.0225, "lng": 72.8420 },
+    "heading": 210,
+    "speedKmh": 42,
+    "incidentId": "inc-demo-cardiac",
+    "assignedHospitalId": "hosp-kem",
+    "driverName": "Amit Kadam",
+    "paramedicName": "Vikram Sawant",
+    "contactNumber": "+91 98201 10802",
+    "equipment": ["Defibrillator", "Ventilator", "12-Lead ECG", "Oxygen Tank"]
+  },
+  {
+    "id": "AMB-108-01",
+    "plate": "MH-01-AN-4412",
+    "callSign": "DELTA-01",
+    "type": "ALS",
+    "status": "AVAILABLE",
+    "operator": {
+      "type": "GOVT_108",
+      "name": "Maharashtra 108 EMS Service"
+    },
+    "pos": { "lat": 19.0178, "lng": 72.8478 },
+    "heading": 180,
+    "speedKmh": 0,
+    "driverName": "Rajesh Shinde",
+    "paramedicName": "Dr. Sneha Patil",
+    "contactNumber": "+91 98201 10801",
+    "equipment": ["Defibrillator", "Ventilator", "12-Lead ECG", "Suction Unit", "Oxygen Tank", "Spine Board"]
+  },
+  {
+    "id": "AMB-028",
+    "plate": "MH-02-CD-9120",
+    "callSign": "HINDUJA-01",
+    "type": "ALS",
+    "status": "AVAILABLE",
+    "operator": {
+      "type": "HOSPITAL",
+      "name": "Hinduja National Hospital EMS"
+    },
+    "baseHospitalId": "hosp-hinduja",
+    "pos": { "lat": 19.0330, "lng": 72.8398 },
+    "heading": 0,
+    "speedKmh": 0,
+    "driverName": "Sunil More",
+    "paramedicName": "Pooja Jadhav",
+    "contactNumber": "+91 98201 10803",
+    "equipment": ["AED", "Oxygen Cylinder", "Stretcher", "Splints"]
+  },
+  {
+    "id": "AMB-055",
+    "plate": "MH-03-BZ-3391",
+    "callSign": "LILAVATI-03",
+    "type": "ALS",
+    "status": "AVAILABLE",
+    "operator": {
+      "type": "HOSPITAL",
+      "name": "Lilavati Heart & Stroke Mobile Unit"
+    },
+    "baseHospitalId": "hosp-lilavati",
+    "pos": { "lat": 19.0514, "lng": 72.8290 },
+    "heading": 45,
+    "speedKmh": 0,
+    "driverName": "Manoj Pawar",
+    "paramedicName": "Dr. Aniket Deshmukh",
+    "contactNumber": "+91 98201 10804",
+    "equipment": ["Defibrillator", "Transport Ventilator", "Infusion Pumps", "12-Lead ECG"]
+  },
+  {
+    "id": "AMB-099",
+    "plate": "MH-01-PR-7711",
+    "callSign": "ZIQITZA-09",
+    "type": "BLS",
+    "status": "AVAILABLE",
+    "operator": {
+      "type": "PRIVATE",
+      "name": "Ziqitza Healthcare Private"
+    },
+    "pos": { "lat": 19.0366, "lng": 72.8601 },
+    "heading": 135,
+    "speedKmh": 0,
+    "driverName": "Kiran Salunkhe",
+    "paramedicName": "Ramesh Gaikwad",
+    "contactNumber": "+91 98201 10805",
+    "equipment": ["AED", "Oxygen Kit", "Basic Trauma Bag"]
+  }
+]

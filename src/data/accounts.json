@@ -1,0 +1,61 @@
+[
+  {
+    "id": "acc-amb-014",
+    "role": "AMBULANCE",
+    "identifier": "AMB-014",
+    "plate": "MH-01-EQ-1082",
+    "secretHash": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "ambulanceId": "AMB-014",
+    "label": "Ambulance Unit AMB-014 (108 EMS)"
+  },
+  {
+    "id": "acc-amb-028",
+    "role": "AMBULANCE",
+    "identifier": "AMB-028",
+    "plate": "MH-02-CD-9120",
+    "secretHash": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "ambulanceId": "AMB-028",
+    "label": "Ambulance Unit AMB-028 (Hinduja EMS)"
+  },
+  {
+    "id": "acc-amb-099",
+    "role": "AMBULANCE",
+    "identifier": "AMB-099",
+    "plate": "MH-01-PR-7711",
+    "secretHash": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "ambulanceId": "AMB-099",
+    "label": "Ambulance Unit AMB-099 (Ziqitza Private)"
+  },
+  {
+    "id": "acc-hosp-sion",
+    "role": "HOSPITAL",
+    "identifier": "HOSP-SION",
+    "secretHash": "d3ad9315b7be5dd53b31a273b3b3aba5defe700808305aa16a3062b76658a791",
+    "hospitalId": "hosp-sion",
+    "label": "Sion Hospital Trauma Center"
+  },
+  {
+    "id": "acc-hosp-kem",
+    "role": "HOSPITAL",
+    "identifier": "HOSP-KEM",
+    "secretHash": "d3ad9315b7be5dd53b31a273b3b3aba5defe700808305aa16a3062b76658a791",
+    "hospitalId": "hosp-kem",
+    "label": "KEM Hospital Regional Hub"
+  },
+  {
+    "id": "acc-hosp-lilavati",
+    "role": "HOSPITAL",
+    "identifier": "HOSP-LILAVATI",
+    "secretHash": "d3ad9315b7be5dd53b31a273b3b3aba5defe700808305aa16a3062b76658a791",
+    "hospitalId": "hosp-lilavati",
+    "label": "Lilavati Hospital & Research"
+  },
+  {
+    "id": "acc-hosp-hinduja",
+    "role": "HOSPITAL",
+    "identifier": "HOSP-HINDUJA",
+    "secretHash": "d3ad9315b7be5dd53b31a273b3b3aba5defe700808305aa16a3062b76658a791",
+    "hospitalId": "hosp-hinduja",
+    "label": "Hinduja National Hospital"
+  }
+]
